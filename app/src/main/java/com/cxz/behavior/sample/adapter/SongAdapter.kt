@@ -1,0 +1,16 @@
+package com.cxz.behavior.sample.adapter
+
+import com.chad.library.adapter.base.BaseQuickAdapter
+import com.chad.library.adapter.base.viewholder.BaseViewHolder
+import com.cxz.behavior.sample.R
+
+/**
+ * @author chenxz
+ * @date 2020/9/11
+ * @desc
+ */
+class SongAdapter : BaseQuickAdapter<Int, BaseViewHolder>(R.layout.item_song_list) {
+    override fun convert(holder: BaseViewHolder, item: Int) {
+
+    }
+}
