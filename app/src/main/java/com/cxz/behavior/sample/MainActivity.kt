@@ -5,7 +5,7 @@ import android.util.TypedValue
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.viewpager.widget.ViewPager
-import com.cxz.behavior.sample.adapter.ViewPagerAdapter
+import com.cxz.behavior.sample.adapter.MyFragmentPagerAdapter
 import com.cxz.behavior.sample.fragment.SongFragment
 import com.cxz.behavior.sample.fragment.TabFragment
 import com.jaeger.library.StatusBarUtil
@@ -33,8 +33,9 @@ class MainActivity : AppCompatActivity() {
         mFragments.add(TabFragment.newInstance("我是专辑页面"))
         mFragments.add(TabFragment.newInstance("我是视屏页面"))
         mFragments.add(TabFragment.newInstance("我是资讯页面"))
-        val viewPagerAdapter = ViewPagerAdapter(supportFragmentManager, mFragments)
-        viewPager.adapter = viewPagerAdapter
+
+        val fragmentPagerAdapter = MyFragmentPagerAdapter(supportFragmentManager, mFragments)
+        viewPager.adapter = fragmentPagerAdapter
         stl.setViewPager(viewPager, mTitles)
 
         // 反射修改最少滑动距离

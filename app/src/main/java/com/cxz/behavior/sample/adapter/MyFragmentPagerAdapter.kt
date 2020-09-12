@@ -9,7 +9,7 @@ import androidx.fragment.app.FragmentPagerAdapter
  * @date 2020/9/11
  * @desc
  */
-class ViewPagerAdapter : FragmentPagerAdapter {
+class MyFragmentPagerAdapter : FragmentPagerAdapter {
 
     private var fragmentList = mutableListOf<Fragment>()
 

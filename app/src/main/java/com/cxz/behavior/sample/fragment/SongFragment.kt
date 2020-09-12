@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.cxz.behavior.sample.R
 import com.cxz.behavior.sample.adapter.SongAdapter
 import kotlinx.android.synthetic.main.fragment_song.*
@@ -20,30 +19,28 @@ class SongFragment : Fragment() {
 
     private var songAdapter: SongAdapter? = null
 
-    private val mDataList = mutableListOf<Int>()
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        initData()
-    }
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.fragment_song, container, false)
-        initView(view)
-        return view
+        return inflater.inflate(R.layout.fragment_song, container, false)
     }
 
-    private fun initView(view: View?) {
-        val recyclerView = view?.findViewById<RecyclerView>(R.id.recyclerView)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        initView()
+    }
+
+    private fun initView() {
+        songAdapter = SongAdapter()
+        songAdapter?.setList(initData())
         recyclerView?.layoutManager = LinearLayoutManager(requireContext())
         recyclerView?.adapter = songAdapter
     }
 
-    private fun initData() {
+    private fun initData(): MutableList<Int> {
+        val list = mutableListOf<Int>()
         for (i in 0..32) {
-            mDataList.add(i)
+            list.add(i)
         }
-        songAdapter = SongAdapter()
-        songAdapter?.addData(mDataList)
+        return list
     }
 }

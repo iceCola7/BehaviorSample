@@ -10,7 +10,9 @@ import com.cxz.behavior.sample.R
  * @desc
  */
 class SongAdapter : BaseQuickAdapter<Int, BaseViewHolder>(R.layout.item_song_list) {
-    override fun convert(holder: BaseViewHolder, item: Int) {
 
+    override fun convert(holder: BaseViewHolder, item: Int) {
+        holder.setText(R.id.tv_item_muisc_no, "${item + 1}")
     }
+
 }
