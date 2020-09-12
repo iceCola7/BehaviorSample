@@ -1,6 +1,7 @@
 package com.cxz.behavior.sample.behavior
 
 import android.content.Context
+import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.graphics.drawable.GradientDrawable
 import android.util.AttributeSet
@@ -8,6 +9,7 @@ import android.view.View
 import android.widget.ImageView
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.math.MathUtils
+import androidx.palette.graphics.Palette
 import com.cxz.behavior.sample.R
 import kotlin.math.roundToInt
 
@@ -44,21 +46,21 @@ class FaceBehavior : CoordinatorLayout.Behavior<View> {
         faceTransY = context.resources.getDimension(R.dimen.face_trans_y)
 
         // 抽取图片资源的亮色或者暗色作为蒙层的背景渐变色
-//        val palette: Palette = Palette.from(BitmapFactory.decodeResource(context.resources, R.mipmap.jj)).generate()
-//        val vibrantSwatch: Palette.Swatch? = palette.vibrantSwatch
-//        val mutedSwatch: Palette.Swatch? = palette.mutedSwatch
-//        val colors = IntArray(2)
-//        if (mutedSwatch != null) {
-//            colors[0] = mutedSwatch.rgb
-//            colors[1] = getTranslucentColor(0.6f, mutedSwatch.rgb)
-//        } else if (vibrantSwatch != null) {
-//            colors[0] = vibrantSwatch.rgb
-//            colors[1] = getTranslucentColor(0.6f, vibrantSwatch.rgb)
-//        } else {
-//            colors[0] = Color.parseColor("#4D000000")
-//            colors[1] = getTranslucentColor(0.6f, Color.parseColor("#4D000000"))
-//        }
-//        drawable = GradientDrawable(GradientDrawable.Orientation.LEFT_RIGHT, colors)
+        val palette: Palette = Palette.from(BitmapFactory.decodeResource(context.resources, R.mipmap.jj)).generate()
+        val vibrantSwatch: Palette.Swatch? = palette.vibrantSwatch
+        val mutedSwatch: Palette.Swatch? = palette.mutedSwatch
+        val colors = IntArray(2)
+        if (mutedSwatch != null) {
+            colors[0] = mutedSwatch.rgb
+            colors[1] = getTranslucentColor(0.6f, mutedSwatch.rgb)
+        } else if (vibrantSwatch != null) {
+            colors[0] = vibrantSwatch.rgb
+            colors[1] = getTranslucentColor(0.6f, vibrantSwatch.rgb)
+        } else {
+            colors[0] = Color.parseColor("#4D000000")
+            colors[1] = getTranslucentColor(0.6f, Color.parseColor("#4D000000"))
+        }
+        drawable = GradientDrawable(GradientDrawable.Orientation.LEFT_RIGHT, colors)
     }
 
     override fun layoutDependsOn(parent: CoordinatorLayout, child: View, dependency: View): Boolean {
@@ -68,7 +70,7 @@ class FaceBehavior : CoordinatorLayout.Behavior<View> {
 
     override fun onLayoutChild(parent: CoordinatorLayout, child: View, layoutDirection: Int): Boolean {
         // 设置蒙层背景
-//        child.findViewById<View>(R.id.v_mask).background = drawable
+        child.findViewById<View>(R.id.v_mask).background = drawable
         return false
     }
 
