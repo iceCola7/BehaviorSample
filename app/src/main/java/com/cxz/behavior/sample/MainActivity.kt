@@ -1,11 +1,11 @@
 package com.cxz.behavior.sample
 
 import android.os.Bundle
-import android.util.TypedValue
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.viewpager.widget.ViewPager
 import com.cxz.behavior.sample.adapter.MyFragmentPagerAdapter
+import com.cxz.behavior.sample.ext.dp2px
 import com.cxz.behavior.sample.fragment.SongFragment
 import com.cxz.behavior.sample.fragment.TabFragment
 import com.jaeger.library.StatusBarUtil
@@ -49,10 +49,6 @@ class MainActivity : AppCompatActivity() {
             e.printStackTrace()
         }
         viewPager.offscreenPageLimit = mFragments.size
-    }
-
-    private fun dp2px(dpVal: Float): Int {
-        return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dpVal, resources.displayMetrics).toInt()
     }
 
 }

@@ -3,6 +3,7 @@ package com.cxz.behavior.sample.weiget
 import android.content.Context
 import android.util.AttributeSet
 import androidx.constraintlayout.widget.ConstraintLayout
+import com.cxz.behavior.sample.ext.getStatusBarHeight
 
 /**
  * @author chenxz
@@ -20,15 +21,7 @@ class TopBarLayout : ConstraintLayout {
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
         val newHeightMeasureSpec =
-            MeasureSpec.makeMeasureSpec(measuredHeight + getStatusBarHeight(), MeasureSpec.EXACTLY)
+            MeasureSpec.makeMeasureSpec(measuredHeight + context.getStatusBarHeight(), MeasureSpec.EXACTLY)
         super.onMeasure(widthMeasureSpec, newHeightMeasureSpec)
-    }
-
-    /**
-     * 获取状态栏高度
-     */
-    private fun getStatusBarHeight(): Int {
-        val resourceId = context.resources.getIdentifier("status_bar_height", "dimen", "android")
-        return context.resources.getDimensionPixelSize(resourceId)
     }
 }

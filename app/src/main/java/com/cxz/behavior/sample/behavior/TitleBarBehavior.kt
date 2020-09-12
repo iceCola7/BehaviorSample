@@ -6,6 +6,7 @@ import android.view.View
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.math.MathUtils
 import com.cxz.behavior.sample.R
+import com.cxz.behavior.sample.ext.getStatusBarHeight
 
 /**
  * @author chenxz
@@ -23,9 +24,7 @@ class TitleBarBehavior : CoordinatorLayout.Behavior<View> {
     constructor(context: Context) : this(context, null)
 
     constructor(context: Context, attrs: AttributeSet?) : super(context, attrs) {
-        val resourceId = context.resources.getIdentifier("status_bar_height", "dimen", "android")
-        val statusBarHeight = context.resources.getDimensionPixelSize(resourceId)
-        topBarHeight = (context.resources.getDimension(R.dimen.top_bar_height) + statusBarHeight).toInt()
+        topBarHeight = (context.resources.getDimension(R.dimen.top_bar_height) + context.getStatusBarHeight()).toInt()
         contentTransY = context.resources.getDimension(R.dimen.content_trans_y)
     }
 

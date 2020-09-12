@@ -11,6 +11,7 @@ import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.math.MathUtils
 import androidx.palette.graphics.Palette
 import com.cxz.behavior.sample.R
+import com.cxz.behavior.sample.ext.getStatusBarHeight
 import kotlin.math.roundToInt
 
 /**
@@ -38,9 +39,7 @@ class FaceBehavior : CoordinatorLayout.Behavior<View> {
     constructor(context: Context) : this(context, null)
 
     constructor(context: Context, attrs: AttributeSet?) : super(context, attrs) {
-        val resourceId = context.resources.getIdentifier("status_bar_height", "dimen", "android")
-        val statusBarHeight = context.resources.getDimensionPixelSize(resourceId)
-        topBarHeight = context.resources.getDimension(R.dimen.top_bar_height).toInt() + statusBarHeight
+        topBarHeight = context.resources.getDimension(R.dimen.top_bar_height).toInt() + context.getStatusBarHeight()
         contentTransY = context.resources.getDimension(R.dimen.content_trans_y)
         downEndY = context.resources.getDimension(R.dimen.content_trans_down_end_y)
         faceTransY = context.resources.getDimension(R.dimen.face_trans_y)
