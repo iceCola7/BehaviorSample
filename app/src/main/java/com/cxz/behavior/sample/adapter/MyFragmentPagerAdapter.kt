@@ -13,7 +13,8 @@ class MyFragmentPagerAdapter : FragmentPagerAdapter {
 
     private var fragmentList = mutableListOf<Fragment>()
 
-    constructor(fm: FragmentManager, fragmentList: MutableList<Fragment>) : super(fm) {
+    constructor(fm: FragmentManager, fragmentList: MutableList<Fragment>) :
+            super(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
         this.fragmentList = fragmentList
     }
 

@@ -20,16 +20,13 @@ class DrawableLeftTextView : AppCompatTextView {
 
     override fun onDraw(canvas: Canvas?) {
         val drawables = compoundDrawables
-        if (drawables != null) {
-            val drawableLeft = drawables[0]
-            if (drawableLeft != null) {
-                val textWidth = paint.measureText(text.toString())
-                val drawablePadding = compoundDrawablePadding
-                var drawableWidth = 0
-                drawableWidth = drawableLeft.intrinsicWidth
-                val bodyWidth = textWidth + drawableWidth + drawablePadding
-                canvas!!.translate((width - bodyWidth) / 2, 0f)
-            }
+        val drawableLeft = drawables[0]
+        if (drawableLeft != null) {
+            val textWidth = paint.measureText(text.toString())
+            val drawablePadding = compoundDrawablePadding
+            val drawableWidth =  drawableLeft.intrinsicWidth
+            val bodyWidth = textWidth + drawableWidth + drawablePadding
+            canvas!!.translate((width - bodyWidth) / 2, 0f)
         }
         super.onDraw(canvas)
     }

@@ -102,6 +102,12 @@ class FaceBehavior : CoordinatorLayout.Behavior<View> {
         return true
     }
 
+    /**
+     * 获取沉浸式透明颜色
+     * @param percent Float
+     * @param rgb Int
+     * @return Int
+     */
     private fun getTranslucentColor(percent: Float, rgb: Int): Int {
         val blue = Color.blue(rgb)
         val green = Color.green(rgb)
